@@ -1,0 +1,14 @@
+.condo {
+  height:50vh;
+  width:100vw;
+  filter: blur(4px);
+}
+
+.inconv {
+  margin:10px auto 15px;
+}
+
+
+.sad-face {
+  height:40vh;
+}
