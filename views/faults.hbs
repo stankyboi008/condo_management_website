@@ -5,16 +5,64 @@
     <h2 class = "inconv">We're sorry for the inconvience</h2>
   </div>
 
-  <div class = "mt-5">
+  <div class = "mt-5 ms-2">
     <p><em>Although we strive to give you the best residential experience, we may be unsuccessful at times.</em></p>
     <p>Your feedback goes a long way in helping us improve the residential experience for all. Please fill up the feedback form below and we will get back to you as soon as we can</p>
   </div>
 
-  <form class = "mt-5" method = "POST">
+  <form class = "mt-5 ms-2" method = "POST">
+
     <div class="form-group">
       <label>Your Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Enter your name">
+      <input type="text" class="form-control" name="name" placeholder="Enter your name">
     </div>
+
+    <div class="form-group mt-3">
+      <label>Your Email Address</label>
+      <input type="text" class="form-control" name="email" placeholder="Enter your email address">
+      <small id="emailHelp" class="form-text text-muted">This is for us to get in touch with you.</small>
+    </div>
+
+    <div class="form-group mt-3">
+      <label>Type of issue</label>
+      <br>
+      <small class="form-text text-muted">Click on the dropdown to select your type of issue</small>
+      <select class="form-control" name = "issue_type">
+        <option value = "cleanliness">Cleanliness</option>
+        <option value = "noise">Noise</option>
+        <option value = "neighbour">Neighbour</option>
+        <option value = "Maintainence of facilities">Maintainence of facilities</option>
+        <option value = "others">Others</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-3">
+       <label>Describe your issue here</label>
+       <textarea class="form-control" rows="5" name="issue_desc"></textarea>
+     </div>
+
+
+     <div class="form-group mt-3">
+      <label>Has this kind of issue been rectified before?</label>
+      <br>
+      <input class="form-check-input" type="radio" name="yesnoradio" value="yes"><label>Yes</label>
+      <input class="form-check-input" type="radio" name="yesnoradio" value="no"><label>No</label>
+     </div>
+
+     <div class = "form-group mt-3">
+       <label>If this issue has been rectified before, check the appropriate checkboxes that explain why this may have happened again.</label>
+       <br>
+       <input class="form-check-input" type="checkbox" name = "happen_again" value="long_time"><label>Been a while since last maintainence</label>
+       <br>
+       <input class="form-check-input" type="checkbox" name = "happen_again" value="irresponsible"><label>Irresponsible Use</label>
+       <br>
+       <input class="form-check-input" type="checkbox" name = "happen_again" value="lack_of_maintainence"><label>Lack of maintainence</label>
+       <br>
+       <div class= "text-center">
+         <button type="submit" class="btn btn-primary" id="submit_btn">Submit</button>
+       </div>
+     </div>
+
   </form>
 
   {{/block}}

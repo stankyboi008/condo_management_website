@@ -13,6 +13,14 @@
   height:40vh;
 }
 
+#textarea {
+  width:50vw;
+}
+
 .form-control {
   width:20vw;
+}
+
+#submit_btn {
+  width:40vw;
 }

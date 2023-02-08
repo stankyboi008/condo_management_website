@@ -1,0 +1,15 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class = "text-center mt-4">
+      <img class = "sad-face" src= "successful.png">
+      <h2 class = "inconv">Your submission has been successfully recorded.</h2>
+      <button type="return" class="btn btn-primary btn-lg" id = "return">Return to Home Page</button>
+    </div>
+    <script>
+      let button = document.querySelector("#return");
+      button.addEventListener("click",function() {
+        location.href = "/";
+      })
+    </script>
+  {{/block}}
+{{/extends}}
