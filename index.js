@@ -62,8 +62,12 @@ async function main() {
 
   })
 
+  const listings = await db.collection("ComplaintsAndIssues").find().toArray();
+
   app.get('/complaints',function(req,res) {
-    res.render('complaints');
+    res.render('complaints',{
+      'complaint':listings
+    });
   })
 }
 

@@ -1,5 +1,25 @@
-<!-- {{#extends "base"}}
+{{#extends "base"}}
   {{#block "content"}}
 
+  <div class="d-inline-flex p-2">
+    {{#each complaint}}
+    <div class="card m-3" style="width: 18rem;">
+      <img class="card-img-top" src="complaints.png" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">Name: {{this.name}}</p>
+        <p class="card_text">Email: {{this.email}}</p>
+        <p class="card_text">Type of issue: {{this.issue_type}}</p>
+        <p class="card_text">Description of issue: {{this.issue_desc}}</p>
+        <p class="card_text">Happened Before: {{this.yesnoradio}}</p>
+        {{#each this.happen_again}}
+          <p class="card_text">If so, why again: {{this}}</p>
+        {{/each}}
+        <a href = "mailto: {{this.email}}?subject=Response to your query regarding {{this.issue_type}}" target="_blank" class = "btn btn-primary stretched-link">Respond via Email</a>
+      </div>
+     </div>
+     {{/each}}
+     </div>
+
   {{/block}}
-{{/extends}} -->
+
+{{/extends}}
