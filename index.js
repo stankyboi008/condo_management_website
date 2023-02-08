@@ -1,7 +1,7 @@
 //Importing express for use in nodejs
 const express = require('express');
+const hbs = require('hbs'); //import hbs into nodejs for template inheritance
 const wax = require('wax-on');
-
 const app = express();
 
 //intialise the view engine
@@ -17,7 +17,7 @@ wax.on(hbs.handlebars);
 wax.setLayoutPath('./views/layouts');
 
 app.get('/',function(req,res) {
-  res.send("Hello World!");
+  res.render('home');
 })
 
 app.listen(3000,function() {
