@@ -23,6 +23,8 @@ app.use(express.urlencoded({
   extended:false
 }))
 
+const COLLECTION = "ComplaintsAndIssues";
+
 const mongoURI = "mongodb+srv://cerealgiant:rotiprata1234@cluster0.mirw50s.mongodb.net/?retryWrites=true&w=majority"
 
 async function main() {
@@ -51,7 +53,7 @@ async function main() {
     console.log(req.body);
 
     // Adding to mongodb
-    db.collection("ComplaintsAndIssues").insertOne({
+    db.collection(DB).insertOne({
       'name':req.body.name,
       'email':req.body.email,
       'issue_type':req.body.issue_type,
@@ -62,13 +64,31 @@ async function main() {
 
   })
 
-  const listings = await db.collection("ComplaintsAndIssues").find().toArray();
-
-  app.get('/complaints',function(req,res) {
+  app.get('/complaints',async function(req,res) {
+    //Start with empty criteria object
+    criteria = {};
+    
+    if(req.query.name) {
+	criteria['name'] = {
+		"$regex":req.query.name,
+		"$options":"i"
+	}
+    }
+	    
+	if(req.query.desc) {
+	criteria['issue_desc'] = {
+		"$regex":req.query.desc,
+		"$options":"i"
+	}
+	}
+	const results = await db.collection(COLLECTION).find(criteria).toArray();
+	
     res.render('complaints',{
-      'complaint':listings
+      'complaint':results,
+      'name':req.query.name,
+      'desc':req.query.desc
+	});
     });
-  })
 }
 
 main();

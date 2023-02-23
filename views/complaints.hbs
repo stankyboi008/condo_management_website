@@ -1,25 +1,38 @@
 {{#extends "base"}}
   {{#block "content"}}
 
-  <div class="d-inline-flex p-2">
-    {{#each complaint}}
-    <div class="card m-3" style="width: 18rem;">
-      <img class="card-img-top" src="complaints.png" alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Name: {{this.name}}</p>
-        <p class="card_text">Email: {{this.email}}</p>
-        <p class="card_text">Type of issue: {{this.issue_type}}</p>
-        <p class="card_text">Description of issue: {{this.issue_desc}}</p>
-        <p class="card_text">Happened Before: {{this.yesnoradio}}</p>
-        {{#each this.happen_again}}
-          <p class="card_text">If so, why again: {{this}}</p>
-        {{/each}}
-        <a href = "mailto: {{this.email}}?subject=Response to your query regarding {{this.issue_type}}" target="_blank" class = "btn btn-primary stretched-link">Respond via Email</a>
-      </div>
-     </div>
-     {{/each}}
-     </div>
+<form method = "GET">
+  <input type = "text" name = "name" class="form-control mt-2 mb-2" value = "{{name}}" placeholder = "Search by Name">
+  <input type = "text" name = "desc" class="form-control mt-2 mb-2" value = "{{desc}}" placeholder = "Search by Description">
+  <input type = "submit" name = "submit-btn" value = "Search" class="btn btn-primary">
+</form>
 
-  {{/block}}
+ <table class="table">
+   <thead>
+     <tr>
+	<th scope="col">Name</th>
+	<th scope="col">Email</th>
+	<th scope="col">Issue Type</th>
+	<th scope="col">Description</th>
+	<th scope="col">Happened Before</th>
+	<th scope="col">If so, why again</th>
+     </tr>
+   </thead>
+   
+   <tbody>
+    	{{#each complaint}}
+	  <tr>
+	   <td>{{this.name}}</td>
+	   <td>{{this.email}}</td>
+	   <td>{{this.issue_type}}</td>
+	   <td>{{this.issue_desc}}</td>
+	   <td>{{this.yesnoradio}}</td>
+	   <td>{{this.happen_again}}</td>
+	 {{/each}}
+	  </tr>
+   </tbody>
+ </table>
+
+    {{/block}}
 
 {{/extends}}
